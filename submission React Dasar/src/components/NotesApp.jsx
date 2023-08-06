@@ -2,9 +2,9 @@ import React from 'react';
 
 import HeaderApp from './HeaderApp';
 import NotesActive from './NotesActive';
-import ArchiveButton from './ArchiveButton';
 import { getInitialData } from '../utils/index';
 import NotesInput from './NotesInput';
+import NotesArchive from './NotesArchive';
 
 class NotesApp extends React.Component {
     constructor(props) {
@@ -59,6 +59,13 @@ class NotesApp extends React.Component {
     }
 
     render() {
+        const notes = this.state.notes;
+        const activeNotes = notes.filter((note) => {
+            return note.archived === false
+        });
+        const archiveNotes = notes.filter((note) => {
+            return note.archived === true
+        });
         
         return (
         <div>
@@ -66,9 +73,9 @@ class NotesApp extends React.Component {
         <div className="note-app__body">
         <NotesInput addNote={this.onAddNoteHandler}/>
         <h2>Catatan Aktif</h2>
-        <NotesActive notes={this.state.notes} onArchive={this.onArchiveHandler} onDelete={ this.onDeleteHandler }/>
+        <NotesActive notes={activeNotes} onArchive={this.onArchiveHandler} onDelete={ this.onDeleteHandler }/>
         <h2>Arsip</h2>
-        <ArchiveButton notes={this.state.notes} onDelete={this.onDeleteHandler}  onArchive={this.onArchiveHandler}/>
+        <NotesArchive notes={archiveNotes} onDelete={this.onDeleteHandler}  onArchive={this.onArchiveHandler} isArchive/>
         </div>
         </div>
         )
