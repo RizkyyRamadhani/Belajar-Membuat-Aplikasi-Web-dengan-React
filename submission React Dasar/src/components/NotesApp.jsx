@@ -66,7 +66,7 @@ class NotesApp extends React.Component {
         <div className="note-app__body">
         <NotesInput addNote={this.onAddNoteHandler}/>
         <h2>Catatan Aktif</h2>
-        <NotesActive notes={this.state.notes} onDelete={ this.onDeleteHandler }/>
+        <NotesActive notes={this.state.notes} onArchive={this.onArchiveHandler} onDelete={ this.onDeleteHandler }/>
         <h2>Arsip</h2>
         <ArchiveButton notes={this.state.notes} onDelete={this.onDeleteHandler}  onArchive={this.onArchiveHandler}/>
         </div>
