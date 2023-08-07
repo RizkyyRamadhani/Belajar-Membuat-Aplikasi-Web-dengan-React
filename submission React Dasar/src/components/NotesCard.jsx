@@ -13,7 +13,7 @@ function NotesCard({ id, title, body, createdAt, onDelete, onArchive, isArchive}
           <p className="note-item__body">{body}</p>
           <div className="note-item__action">
             <DeleteButton id={id} onDelete={onDelete}/>
-            <ArchiveButton id={id} onArchive={onArchive} isArchived={isArchive} />
+            <ArchiveButton id={id} onArchive={onArchive} isArchive={isArchive} />
           </div>
         </div>
       </div>
